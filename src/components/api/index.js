@@ -23,7 +23,7 @@ export const fetchSummaryData = async () => {
 
 export const fetchGlobalHistoricalData = async () => {
   try {
-    const { data } = await axios.get(`${url}/historical/all?lastdays=30`);
+    const { data } = await axios.get(`${url}/historical/all?lastdays=120`);
     return data;
   } catch (error) {
     console.log(error);
