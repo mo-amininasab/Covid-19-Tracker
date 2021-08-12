@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import { fetchCountries } from "../components/api/index";
+
+import { countriesActions } from "../store/countriesSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 import Box from "@material-ui/core/Box";
 import "./Header.module.css";
-
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -22,6 +26,18 @@ const useStyles = makeStyles((theme) => ({
 function Header() {
   const classes = useStyles();
   const [selectedCountry, setSelectedCountry] = useState("global");
+//   const fetchedCountries = useSelector((state) => state.countries.countries);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchCountriesFromAPI = async () => {
+      const data = await fetchCountries();
+      dispatch(countriesActions.setCountries(data));
+    };
+
+    fetchCountriesFromAPI();
+  }, []);
 
   const handleChange = (event) => {
     setSelectedCountry(event.target.value);
