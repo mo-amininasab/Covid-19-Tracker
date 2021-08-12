@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 
+// api
 import { fetchCountries } from "./components/api/index";
 
+// redux
 import { countriesActions } from "./store/countriesSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 // components
 import Header from "./components/Header";
-
-import classes from './App.css'
+import Cards from "./components/Cards";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,8 +27,9 @@ function App() {
   console.log(fetchedCountries);
 
   return (
-    <div className={classes.App}>
+    <div>
       <Header />
+      <Cards />
     </div>
   );
 }
