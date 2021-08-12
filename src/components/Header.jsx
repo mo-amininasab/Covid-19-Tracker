@@ -10,18 +10,22 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
 const useStyles = makeStyles((theme) => ({
+  header: {
+    display: "flex",
+    alignItems: "center",
+    marginBottom: "20px",
+    justifyContent: "space-between",
+    padding: '15px',
+  },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 130,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
   },
 }));
 
 function Header() {
   const classes = useStyles();
-  
+
   const [selectedCountry, setSelectedCountry] = useState("global");
 
   const fetchedCountries = useSelector((state) => state.countries.countries);
@@ -31,13 +35,7 @@ function Header() {
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="row"
-      p={1}
-      m={1}
-      bgcolor="background.paper"
-    >
+    <Box className={classes.header}>
       <h1>COVID-19 TRACKER</h1>
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel id="demo-simple-select-outlined-label">Area</InputLabel>
