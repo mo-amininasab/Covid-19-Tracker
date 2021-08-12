@@ -1,25 +1,33 @@
 import React, { useEffect } from "react";
 
 // api
-import { fetchCountries } from "./components/api/index";
-import { fetchSummaryData } from "./components/api/index";
+import {
+  fetchCountries,
+  fetchSummaryData,
+  fetchGlobalHistoricalData,
+} from "./components/api/index";
 
 // redux
 import { countriesActions } from "./store/countriesSlice";
 import { summaryDataActions } from "./store/summarySlice";
+import { historicalDataActions } from "./store/historicalDataSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 // components
 import Header from "./components/Header";
 import Cards from "./components/Cards";
-import Table from './components/Table'
-import Map from './components/Map'
+import Table from "./components/Table";
+import Map from "./components/Map";
+import Chart from "./components/Chart";
 
 function App() {
   const dispatch = useDispatch();
   const fetchedCountries = useSelector((state) => state.countries.countries);
   const fetchedSummaryData = useSelector(
     (state) => state.summaryData.summaryData
+  );
+  const fetchedHistoricalData = useSelector(
+    (state) => state.historicalData.global
   );
 
   useEffect(() => {
@@ -33,17 +41,23 @@ function App() {
       dispatch(summaryDataActions.setSummaryData(data));
     };
 
+    // const fetchHistoricalDataFromAPI = async () => {
+    //   const data = await fetchGlobalHistoricalData();
+    //   dispatch(historicalDataActions.setHistoricalGlobalData(data));
+    // };
+
     fetchCountriesFromAPI();
     fetchSummaryDataFromAPI();
+    // fetchHistoricalDataFromAPI();
   }, []);
 
-  console.log(fetchedSummaryData);
-
+  
   console.log(fetchedCountries);
+  console.log(fetchedSummaryData);
+  // console.log(fetchedHistoricalData);
 
   return (
     <div className="flex h-screen">
-
       {/* Left */}
       <div className="w-3/4 border border-black p-2 m-3">
         <Header />
@@ -54,6 +68,7 @@ function App() {
       {/* Right */}
       <div className="w-1/4 border border-black p-2 m-3 ml-0">
         <Table />
+        <Chart />
       </div>
     </div>
   );
