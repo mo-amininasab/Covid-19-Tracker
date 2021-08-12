@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 // components
 import Header from "./components/Header";
 
+import classes from './App.css'
+
 function App() {
   const dispatch = useDispatch();
   const fetchedCountries = useSelector((state) => state.countries.countries);
@@ -24,7 +26,7 @@ function App() {
   console.log(fetchedCountries);
 
   return (
-    <div>
+    <div className={classes.App}>
       <Header />
     </div>
   );
