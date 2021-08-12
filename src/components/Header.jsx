@@ -15,7 +15,7 @@ function Header() {
   };
 
   return (
-    <div className="flex font-noto p-2 m-4 border border-black justify-between items-center">
+    <div className="flex font-noto p-2 mb-3 border border-black justify-between items-center">
       <h1 className="text-xl sm:text-3xl font-semibold ">Covid-19 Tracker</h1>
       <select
         className="px-3 py-1 w-20 sm:w-28 rounded-md"

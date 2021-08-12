@@ -45,14 +45,14 @@ function App() {
     <div className="flex h-screen">
 
       {/* Left */}
-      <div className="w-3/4">
+      <div className="w-3/4 border border-black p-2 m-3">
         <Header />
         <Cards />
         <Map />
       </div>
 
       {/* Right */}
-      <div className="w-1/4">
+      <div className="w-1/4 border border-black p-2 m-3 ml-0">
         <Table />
       </div>
     </div>

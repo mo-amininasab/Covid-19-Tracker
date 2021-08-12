@@ -53,7 +53,7 @@ function Cards() {
         ).deaths;
 
   return (
-    <div className="flex space-x-4 border border-black m-4 p-2">
+    <div className="flex space-x-4 border border-black mb-3 p-2">
       <div className="flex flex-col bg-white w-1/3 py-3 px-4 font-noto rounded-md shadow-lg border-b-12 border-yellow-500">
         <h3 className="text-md text-gray-500 mb-1">Coronavirus Cases</h3>
         <h1 className="text-4xl font-semibold text-yellow-500 mb-1">
