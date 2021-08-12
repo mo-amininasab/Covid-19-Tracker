@@ -1,9 +1,5 @@
-import React, { useState, useEffect } from "react";
-
-import { fetchCountries } from "../components/api/index";
-
-import { countriesActions } from "../store/countriesSlice";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import Box from "@material-ui/core/Box";
 import "./Header.module.css";
@@ -25,23 +21,15 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
   const classes = useStyles();
+  
   const [selectedCountry, setSelectedCountry] = useState("global");
-//   const fetchedCountries = useSelector((state) => state.countries.countries);
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const fetchCountriesFromAPI = async () => {
-      const data = await fetchCountries();
-      dispatch(countriesActions.setCountries(data));
-    };
-
-    fetchCountriesFromAPI();
-  }, []);
+  const fetchedCountries = useSelector((state) => state.countries.countries);
 
   const handleChange = (event) => {
     setSelectedCountry(event.target.value);
   };
+
   return (
     <Box
       display="flex"
@@ -60,10 +48,14 @@ function Header() {
           onChange={handleChange}
           label="Area"
         >
-          <MenuItem value="global">global</MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem key={0} value="global">
+            global
+          </MenuItem>
+          {fetchedCountries.map((country, index) => (
+            <MenuItem key={index} value={country.countryInfo.iso3}>
+              {country.country}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </Box>
