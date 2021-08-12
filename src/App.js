@@ -12,6 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 // components
 import Header from "./components/Header";
 import Cards from "./components/Cards";
+import Table from './components/Table'
+import Map from './components/Map'
 
 function App() {
   const dispatch = useDispatch();
@@ -35,15 +37,24 @@ function App() {
     fetchSummaryDataFromAPI();
   }, []);
 
-
   console.log(fetchedSummaryData);
 
   console.log(fetchedCountries);
 
   return (
-    <div>
-      <Header />
-      <Cards />
+    <div className="flex h-screen">
+
+      {/* Left */}
+      <div className="w-3/4">
+        <Header />
+        <Cards />
+        <Map />
+      </div>
+
+      {/* Right */}
+      <div className="w-1/4">
+        <Table />
+      </div>
     </div>
   );
 }
