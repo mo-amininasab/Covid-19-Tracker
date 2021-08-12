@@ -3,29 +3,14 @@ import { useSelector } from "react-redux";
 
 import Box from "@material-ui/core/Box";
 import "./Header.module.css";
-import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
-const useStyles = makeStyles((theme) => ({
-  header: {
-    display: "flex",
-    alignItems: "center",
-    marginBottom: "20px",
-    justifyContent: "space-between",
-    padding: '15px',
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 130,
-  },
-}));
+import classes from "./Header.module.css";
 
 function Header() {
-  const classes = useStyles();
-
   const [selectedCountry, setSelectedCountry] = useState("global");
 
   const fetchedCountries = useSelector((state) => state.countries.countries);
@@ -36,8 +21,8 @@ function Header() {
 
   return (
     <Box className={classes.header}>
-      <h1>COVID-19 TRACKER</h1>
-      <FormControl variant="outlined" className={classes.formControl}>
+      <h1 className={classes['form-control__title']}>COVID-19 TRACKER</h1>
+      <FormControl variant="outlined" className={classes["form-control"]}>
         <InputLabel id="demo-simple-select-outlined-label">Area</InputLabel>
         <Select
           labelId="demo-simple-select-outlined-label"
