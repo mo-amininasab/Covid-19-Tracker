@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+
+import { useSelector, useDispatch } from "react-redux";
+import { countriesActions } from "../store/countriesSlice";
 
 function Header() {
-  const [selectedCountry, setSelectedCountry] = useState("global");
-
   const fetchedCountries = useSelector((state) => state.countries.countries);
+  const selectedCountry = useSelector(
+    (state) => state.countries.selectedCountry
+  );
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
-    setSelectedCountry(event.target.value);
+    dispatch(countriesActions.setSelectedCountry(event.target.value));
   };
 
   return (

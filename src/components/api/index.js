@@ -11,3 +11,12 @@ export const fetchCountries = async () => {
     console.log(error);
   }
 };
+
+export const fetchSummaryData = async () => {
+  try {
+    const {data} = await axios.get(`${url}/all`)
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
