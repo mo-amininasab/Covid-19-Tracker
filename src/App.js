@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import ReactTooltip from "react-tooltip";
+
 
 // api
 import {
@@ -21,6 +23,8 @@ import Map from "./components/Map";
 import Chart from "./components/Chart";
 
 function App() {
+  const [tooltipContent, setTooltipContent] = useState("");
+  
   const dispatch = useDispatch();
   const fetchedCountries = useSelector((state) => state.countries.countries);
   const fetchedSummaryData = useSelector(
@@ -63,7 +67,8 @@ function App() {
       <div className="lg:w-3/4 border border-black p-2 m-3">
         <Header />
         <Cards />
-        <Map />
+        <Map setTooltipContent={setTooltipContent}/>
+        <ReactTooltip>{tooltipContent}</ReactTooltip>
       </div>
 
       {/* Right */}
