@@ -25,12 +25,15 @@ export const fetchGlobalHistoricalData = async (country) => {
   try {
     if (country === "global") {
       const { data } = await axios.get(`${url}/historical/all?lastdays=120`);
-      console.log('GLOBAL', data);
       return data;
     } else {
       const { data } = await axios.get(`${url}/historical?lastdays=120`);
-      const selectedCountryData = data.find(_country => _country.country === country);
-      console.log('SPECIFIC', selectedCountryData.timeline);
+      const selectedCountryData = data.find(
+        (_country) => _country.country === country
+      );
+      if (!selectedCountryData) {
+        return null;
+      }
       return selectedCountryData.timeline;
     }
   } catch (error) {
