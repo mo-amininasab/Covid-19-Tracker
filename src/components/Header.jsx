@@ -24,7 +24,7 @@ function Header() {
       >
         <option value="global">Global</option>
         {fetchedCountries.map((country, index) => (
-          <option key={index} value={country.countryInfo.iso3}>
+          <option key={index} value={country.country}>
             {country.country}
           </option>
         ))}

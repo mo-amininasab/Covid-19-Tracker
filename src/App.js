@@ -52,8 +52,9 @@ function App() {
   }, []);
 
   
-  console.log(fetchedCountries);
-  console.log(fetchedSummaryData);
+  // console.log(fetchedCountries);
+  // console.log(fetchedSummaryData);
+  
   // console.log(fetchedHistoricalData);
 
   return (

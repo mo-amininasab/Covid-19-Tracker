@@ -21,10 +21,18 @@ export const fetchSummaryData = async () => {
   }
 };
 
-export const fetchGlobalHistoricalData = async () => {
+export const fetchGlobalHistoricalData = async (country) => {
   try {
-    const { data } = await axios.get(`${url}/historical/all?lastdays=120`);
-    return data;
+    if (country === "global") {
+      const { data } = await axios.get(`${url}/historical/all?lastdays=120`);
+      console.log('GLOBAL', data);
+      return data;
+    } else {
+      const { data } = await axios.get(`${url}/historical?lastdays=120`);
+      const selectedCountryData = data.find(_country => _country.country === country);
+      console.log('SPECIFIC', selectedCountryData.timeline);
+      return selectedCountryData.timeline;
+    }
   } catch (error) {
     console.log(error);
   }

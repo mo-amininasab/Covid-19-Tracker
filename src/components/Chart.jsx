@@ -84,6 +84,10 @@ const buildChartData = (data, casesType = "cases") => {
 
 function Chart() {
   const dispatch = useDispatch();
+  const selectedCountry = useSelector(
+    (state) => state.countries.selectedCountry
+  );
+
   const fetchedHistoricalData = useSelector(
     (state) => state.historicalData.global
   );
@@ -91,19 +95,19 @@ function Chart() {
 
   useEffect(() => {
     const fetchHistoricalDataFromAPI = async () => {
-      const data = await fetchGlobalHistoricalData();
+      const data = await fetchGlobalHistoricalData(selectedCountry);
       const chartData = buildChartData(data);
       dispatch(historicalDataActions.setHistoricalGlobalData(chartData));
     };
 
     fetchHistoricalDataFromAPI();
-  }, []);
+  }, [selectedCountry]);
 
-  console.log(fetchedHistoricalData);
+  // console.log(fetchedHistoricalData);
 
   return (
     <div className="p-2 mt-4 bg-gray-50 rounded-md">
-      <h2 className="font-noto mb-2 text-gray-600">Global new cases</h2>
+      <h2 className="font-noto mb-2 text-gray-600">{selectedCountry} new cases</h2>
       {fetchedHistoricalData && (
         <Line
           data={{
