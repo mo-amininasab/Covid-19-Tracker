@@ -66,7 +66,7 @@ function App() {
       </div>
 
       {/* Right */}
-      <div className="w-1/4 border border-black p-2 m-3 ml-0">
+      <div className="min-w-min border border-black p-2 m-3 ml-0">
         <Table />
         <Chart />
       </div>

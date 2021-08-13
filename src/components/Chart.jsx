@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // chart.js
 import { Line } from "react-chartjs-2";
+import {de} from 'date-fns/locale';
 
 const options = {
     plugins: {
@@ -32,14 +33,13 @@ const options = {
   },
   maintainAspectRatio: true,
   scales: {
-    x: [
-      {
-        type: "time",
+    x: [{
+        type: 'time',
         time: {
-          format: "MM/DD/YY",
-          tooltipFormat: "ll",
-        },
-      },],
+            displayFormats: {
+                quarter: 'MMM YYYY'
+            }
+        },}],
     
     y: 
       {
@@ -94,8 +94,8 @@ function Chart() {
   console.log(fetchedHistoricalData);
 
   return (
-    <div className="border border-black p-2 mt-4">
-      <h2>Global new cases</h2>
+    <div className="p-2 mt-4 bg-gray-50 rounded-md">
+      <h2 className="font-noto mb-2 text-gray-600">Global new cases</h2>
       {fetchedHistoricalData && (
         <Line
           data={{
@@ -105,6 +105,7 @@ function Chart() {
                 data: b,
                 backgroundColor: "rgba(204, 16, 52, 0.5)",
                 borderColor: "#CC1034",
+                fill: true
               },
             ],
           }}
