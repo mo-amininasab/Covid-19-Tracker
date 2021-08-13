@@ -11,21 +11,28 @@ import { useDispatch, useSelector } from "react-redux";
 
 // chart.js
 import { Line } from "react-chartjs-2";
-import {de} from 'date-fns/locale';
 
 const options = {
-    plugins: {
-        legend: false,
-        tooltip: {
-          mode: "index",
-          intersect: false,
-          callbacks: {
-            label: function (tooltipItem, data) {
-              return numeral(tooltipItem.value).format("+0,0");
-            },
-          },
+  plugins: {
+    legend: false,
+    tooltip: {
+      mode: "index",
+      intersect: false,
+      callbacks: {
+        label: function (context) {
+          let label = context.dataset.label || "";
+
+          if (label) {
+            label += ": ";
+          }
+          if (context.parsed.y !== null) {
+            label += numeral(context.parsed.y).format("+0,0");
+          }
+          return label;
         },
+      },
     },
+  },
   elements: {
     point: {
       radius: 0,
@@ -33,27 +40,28 @@ const options = {
   },
   maintainAspectRatio: true,
   scales: {
-    x: [{
-        type: 'time',
-        time: {
-            displayFormats: {
-                quarter: 'MMM YYYY'
-            }
-        },}],
-    
-    y: 
+    x: [
       {
-        grid: {
-          display: false,
-        },
-        ticks: {
-          // Include a dollar sign in the ticks
-          callback: function (value, index, values) {
-            return numeral(value).format("0a");
+        type: "time",
+        time: {
+          displayFormats: {
+            quarter: "MMM YYYY",
           },
         },
       },
-    
+    ],
+
+    y: {
+      grid: {
+        display: false,
+      },
+      ticks: {
+        // Include a dollar sign in the ticks
+        callback: function (value, index, values) {
+          return numeral(value).format("0a");
+        },
+      },
+    },
   },
 };
 
@@ -105,7 +113,7 @@ function Chart() {
                 data: b,
                 backgroundColor: "rgba(204, 16, 52, 0.5)",
                 borderColor: "#CC1034",
-                fill: true
+                fill: true,
               },
             ],
           }}
