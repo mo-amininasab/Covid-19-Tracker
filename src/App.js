@@ -23,7 +23,8 @@ import Map from "./components/Map";
 import Chart from "./components/Chart";
 
 function App() {
-  const [tooltipContent, setTooltipContent] = useState("");
+  // const [tooltipContent, setTooltipContent] = useState("");
+  const reactTooltipContent = useSelector(state => state.reactTooltip.content);
   
   const dispatch = useDispatch();
   const fetchedCountries = useSelector((state) => state.countries.countries);
@@ -67,8 +68,7 @@ function App() {
       <div className="lg:w-3/4 border border-black p-2 m-3">
         <Header />
         <Cards />
-        <Map setTooltipContent={setTooltipContent}/>
-        <ReactTooltip>{tooltipContent}</ReactTooltip>
+        <Map />
       </div>
 
       {/* Right */}

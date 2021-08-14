@@ -107,7 +107,6 @@ function Chart() {
     fetchHistoricalDataFromAPI();
   }, [selectedCountry]);
 
-  // console.log(fetchedHistoricalData);
 
   return (
     <div className="p-2 mt-4 bg-gray-50 rounded-md">
