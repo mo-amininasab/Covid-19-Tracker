@@ -14,6 +14,7 @@ import Cards from "./components/Cards";
 import Table from "./components/Table";
 import Map from "./components/Map";
 import Chart from "./components/Chart";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
   }, []);
 
   return (
+    <>
     <div className="flex flex-col lg:flex-row min-h-screen">
       {/* Left */}
       <div className="lg:w-3/4 lg:h-screen m-3">
@@ -48,6 +50,9 @@ function App() {
         <Chart />
       </div>
     </div>
+    {/* Footer */}
+    <Footer />
+    </>
   );
 }
 

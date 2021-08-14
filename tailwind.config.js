@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         noto: ["Noto Sans JP"],
+        georama: ["Georama"],
       },
     },
     borderWidth: {
