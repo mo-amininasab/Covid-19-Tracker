@@ -109,7 +109,7 @@ function Chart() {
 
 
   return (
-    <div className="p-2 mt-4 bg-gray-50 rounded-md">
+    <div className="p-2 mt-3 bg-gray-50 rounded-md">
       <h2 className="font-noto mb-2 text-gray-600">
         {selectedCountry} new cases
       </h2>

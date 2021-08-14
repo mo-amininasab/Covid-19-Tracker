@@ -41,7 +41,7 @@ function Map() {
     ]);
 
   return (
-    <div className="border border-black h-2/3 bg-gray-100">
+    <div className="bg-gray-100 mx-auto h-2/3 rounded-lg">
       <ComposableMap
         data-tip=""
         projectionConfig={{
@@ -50,7 +50,7 @@ function Map() {
         }}
         style={{ height: "100%", width: "100%" }}
         //   width={600}
-        //   height={422}
+        //   height={990}
       >
         <ZoomableGroup>
           <Geographies geography={geoUrl}>

@@ -63,16 +63,16 @@ function App() {
   // console.log(fetchedHistoricalData);
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen">
+    <div className="flex flex-col lg:flex-row min-h-screen">
       {/* Left */}
-      <div className="lg:w-3/4 h-screen border border-black m-3">
+      <div className="lg:w-3/4 lg:h-screen m-3">
         <Header />
         <Cards />
         <Map />
       </div>
 
       {/* Right */}
-      <div className="min-w-min h-screen lg:w-1/4 border border-black m-3 ml-0">
+      <div className="lg:min-w-min lg:h-screen lg:w-1/4 m-3 mt-0 lg:m-3 lg:ml-0">
         <Table />
         <Chart />
       </div>

@@ -9,7 +9,7 @@ function Table() {
   sortedFetchedCountries.sort((a, b) => (a.cases > b.cases ? -1 : 1));
 
   return (
-    <div className="border-gray-200 rounded-lg h-2/3 overflow-y-scroll">
+    <div className="border-gray-200 rounded-lg h-96 lg:h-2/3 overflow-y-scroll">
       <table className="w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>

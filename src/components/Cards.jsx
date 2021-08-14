@@ -53,8 +53,8 @@ function Cards() {
         ).deaths;
 
   return (
-    <div className="flex space-x-4 border border-black mb-3 p-2">
-      <div className="flex flex-col bg-white w-1/3 py-3 px-4 font-noto rounded-md shadow-lg border-b-12 border-yellow-500">
+    <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:space-x-4 mb-3 p-2">
+      <div className="flex flex-col bg-white sm:w-1/3 py-3 px-4 font-noto rounded-md shadow-lg border-b-12 border-yellow-500">
         <h3 className="text-md text-gray-500 mb-1">Coronavirus Cases</h3>
         <h1 className="text-4xl font-semibold text-yellow-500 mb-1">
           <CountUp
@@ -69,7 +69,7 @@ function Cards() {
           <CountUp start={0} end={cases} duration={2} separator="," /> Total
         </h4>
       </div>
-      <div className="flex flex-col bg-white w-1/3 py-3 px-4 font-noto rounded-md shadow-lg border-b-12 border-green-500">
+      <div className="flex flex-col bg-white sm:w-1/3 py-3 px-4 font-noto rounded-md shadow-lg border-b-12 border-green-500">
         <h3 className="text-md text-gray-500 mb-1">Recovered</h3>
         <h1 className="text-4xl font-semibold text-green-500 mb-1">
           <CountUp
@@ -84,7 +84,7 @@ function Cards() {
           <CountUp start={0} end={recovered} duration={2} separator="," /> Total
         </h4>
       </div>
-      <div className="flex flex-col bg-white w-1/3 py-3 px-4 font-noto rounded-md shadow-lg border-b-12 border-red-500">
+      <div className="flex flex-col bg-white sm:w-1/3 py-3 px-4 font-noto rounded-md shadow-lg border-b-12 border-red-500">
         <h3 className="text-md text-gray-500 mb-1">Deaths</h3>
         <h1 className="text-4xl font-semibold text-red-500 mb-1">
           <CountUp
