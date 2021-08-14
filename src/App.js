@@ -65,14 +65,14 @@ function App() {
   return (
     <div className="flex flex-col lg:flex-row h-screen">
       {/* Left */}
-      <div className="lg:w-3/4 border border-black p-2 m-3">
+      <div className="lg:w-3/4 h-screen border border-black m-3">
         <Header />
         <Cards />
         <Map />
       </div>
 
       {/* Right */}
-      <div className="min-w-min lg:w-1/4 border border-black p-2 m-3 ml-0">
+      <div className="min-w-min h-screen lg:w-1/4 border border-black m-3 ml-0">
         <Table />
         <Chart />
       </div>

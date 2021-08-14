@@ -13,7 +13,7 @@ import { scaleQuantile } from "d3-scale";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import numeral from "numeral";
-import {reactTooltipActions} from '../store/reactTooltipSlice';
+import { reactTooltipActions } from "../store/reactTooltipSlice";
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
@@ -22,8 +22,9 @@ function Map() {
   const fetchedCountries = useSelector((state) => state.countries.countries);
 
   const dispatch = useDispatch();
-  const reactTooltipContent = useSelector(state => state.reactTooltip.content);
-
+  const reactTooltipContent = useSelector(
+    (state) => state.reactTooltip.content
+  );
 
   const colorScale = scaleQuantile()
     .domain(fetchedCountries.map((country) => country.deathsPerOneMillion))
@@ -40,23 +41,24 @@ function Map() {
     ]);
 
   return (
-    <div className="border border-black bg-gray-100">
+    <div className="border border-black h-2/3 bg-gray-100">
       <ComposableMap
         data-tip=""
-        projectionConfig={
-          {
-            // rotate: [33, 65, 0],
-            // scale: 700,
-            // center: [0, 0]
-          }
-        }
+        projectionConfig={{
+          rotate: [-20, 0, 0],
+          scale: 220,
+        }}
+        style={{ height: "100%", width: "100%" }}
+        //   width={600}
+        //   height={422}
       >
         <ZoomableGroup>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map((geo) => {
                 const d = fetchedCountries.find(
-                  (country) => country.countryInfo.iso3 === geo.properties.ISO_A3
+                  (country) =>
+                    country.countryInfo.iso3 === geo.properties.ISO_A3
                 );
                 return (
                   <Geography
@@ -65,29 +67,29 @@ function Map() {
                     onMouseEnter={() => {
                       const { NAME } = geo.properties;
                       const { deaths } = d || 0;
-                      dispatch(reactTooltipActions.setContent(deaths !== 0
-                        ? `${NAME} - ${numeral(deaths).format('0,0a')} deaths`
-                        : `no data`));
-                    //   setTooltipContent(
-                    //     deaths !== 0
-                    //       ? `${NAME} - ${numeral(deaths).format('0,0a')} deaths`
-                    //       : `no data`
-                    //   );
+                      dispatch(
+                        reactTooltipActions.setContent(
+                          deaths !== 0
+                            ? `${NAME} - ${numeral(deaths).format(
+                                "0,0a"
+                              )} deaths`
+                            : `no data`
+                        )
+                      );
                     }}
-                    onMouseLeave={() => dispatch(reactTooltipActions.setContent(""))}
+                    onMouseLeave={() =>
+                      dispatch(reactTooltipActions.setContent(""))
+                    }
                     fill={d ? colorScale(d["deathsPerOneMillion"]) : "#A5F4F6"}
                     stroke="#EAEAEC"
                     style={{
                       default: {
-                        // fill: "#D6D6DA",
                         outline: "none",
                       },
                       hover: {
-                        // fill: "#F53",
                         outline: "none",
                       },
                       pressed: {
-                        // fill: "#E42",
                         outline: "none",
                       },
                     }}
@@ -99,7 +101,6 @@ function Map() {
         </ZoomableGroup>
       </ComposableMap>
       <ReactTooltip>{reactTooltipContent}</ReactTooltip>
-
     </div>
   );
 }
