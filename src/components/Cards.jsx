@@ -17,40 +17,34 @@ function Cards() {
   const todayCases =
     selectedCountry === "global"
       ? fetchedSummaryData.todayCases
-      : fetchedCountries.find(
-          (country) => selectedCountry === country.country
-        ).todayCases;
+      : fetchedCountries.find((country) => selectedCountry === country.country)
+          .todayCases;
   const todayRecovered =
     selectedCountry === "global"
       ? fetchedSummaryData.todayRecovered
-      : fetchedCountries.find(
-          (country) => selectedCountry === country.country
-        ).todayRecovered;
+      : fetchedCountries.find((country) => selectedCountry === country.country)
+          .todayRecovered;
   const todayDeaths =
     selectedCountry === "global"
       ? fetchedSummaryData.todayDeaths
-      : fetchedCountries.find(
-          (country) => selectedCountry === country.country
-        ).todayDeaths;
+      : fetchedCountries.find((country) => selectedCountry === country.country)
+          .todayDeaths;
 
   const cases =
     selectedCountry === "global"
       ? fetchedSummaryData.cases
-      : fetchedCountries.find(
-          (country) => selectedCountry === country.country
-        ).cases;
+      : fetchedCountries.find((country) => selectedCountry === country.country)
+          .cases;
   const recovered =
     selectedCountry === "global"
       ? fetchedSummaryData.recovered
-      : fetchedCountries.find(
-          (country) => selectedCountry === country.country
-        ).recovered;
+      : fetchedCountries.find((country) => selectedCountry === country.country)
+          .recovered;
   const deaths =
     selectedCountry === "global"
       ? fetchedSummaryData.deaths
-      : fetchedCountries.find(
-          (country) => selectedCountry === country.country
-        ).deaths;
+      : fetchedCountries.find((country) => selectedCountry === country.country)
+          .deaths;
 
   return (
     <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:space-x-4 mb-3 p-2">
